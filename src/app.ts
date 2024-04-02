@@ -25,21 +25,21 @@ class App
         this.app.listen(this.port, () =>
         {
             console.log(`app is listening on ${this.port}`)
-            console.log(`-----${this.env}----`)
+            console.log(`-----${this.env}-----`)
         })
     }
 
     private async connectToDatabase()
     {
-        if (this.env !== "production")
-        {
-           set("debug", true) 
-        }
+    if (this.env !== "production")
+    {
+        set("debug", true) 
+    } 
 
-        try {
+    try{
         await connect(dbConnect.url);
         console.log("Database connecteD successfully!");
-    } catch (error) {
+    }catch (error) {
         console.error("Error connecting to the database:", error);
     }
     }
