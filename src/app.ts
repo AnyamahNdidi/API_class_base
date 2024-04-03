@@ -1,58 +1,46 @@
-import express, { Application } from "express"
-import { PORT, NODE_ENV } from "@config"
-import morgan from "morgan"
-import { set, connect, disconnect } from "mongoose" 
-import {dbConnect} from "@databases"
+import express, { Application } from 'express';
+import { PORT, NODE_ENV } from '@config';
+import morgan from 'morgan';
+import { set, connect } from 'mongoose';
+import { dbConnect } from '@databases';
 
-class App
-{
-    public app: Application;
-    public port: number | string;
-    public env: string
-    
-    constructor ()
-    {
-        this.app = express()
-        this.env =  NODE_ENV || "development"
-        this.port = PORT || 9000
+class App {
+  public app: Application;
+  public port: number | string;
+  public env: string;
 
-        //this function automatic run
-        this.initializeMiddlewares()
-        this.connectToDatabase()
-    }
-    public listen()
-    {
-        this.app.listen(this.port, () =>
-        {
-            console.log(`app is listening on ${this.port}`)
-            console.log(`-----${this.env}-----`)
-        })
-    }
+  constructor() {
+    this.app = express();
+    this.env = NODE_ENV || 'development';
+    this.port = PORT || 9000;
 
-    private async connectToDatabase()
-    {
-    if (this.env !== "production")
-    {
-        set("debug", true) 
-    } 
+    //this function automatic run
+    this.initializeMiddlewares();
+    this.connectToDatabase();
+  }
+  public listen() {
+    this.app.listen(this.port, () => {
+      console.log(`app is listening on ${this.port}`);
+      console.log(`-----${this.env}-----`);
+    });
+  }
 
-    try{
-        await connect(dbConnect.url);
-        console.log("Database connecteD successfully!");
-    }catch (error) {
-        console.error("Error connecting to the database:", error);
-    }
+  private async connectToDatabase() {
+    if (this.env !== 'production') {
+      set('debug', true);
     }
 
-    private initializeMiddlewares()
-    {
-        this.app.use(morgan("dev"))
-        
+    try {
+      await connect(dbConnect.url);
+      console.log('Database connecteD successfully!');
+    } catch (error) {
+      console.error('Error connecting to the database:', error);
     }
+  }
 
-    
-    
+  private initializeMiddlewares() {
+    this.app.use(morgan('dev'));
+  }
 }
 
-
-export default App
+export default App;
