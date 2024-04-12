@@ -34,7 +34,7 @@ class App {
       await connect(dbConnect.url);
       console.log('Database connecteD successfully!');
     } catch (error) {
-      console.error('Error connecting to the database:', error);
+      console.log('Error connecting to the database:', error);
     }
   }
 
