@@ -4,6 +4,9 @@ import morgan from 'morgan';
 import { set, connect } from 'mongoose';
 import { dbConnect } from '@databases';
 
+const add = ""
+const add2= ""
+
 class App {
   public app: Application;
   public port: number | string;
@@ -11,7 +14,7 @@ class App {
 
   constructor() {
     this.app = express();
-    this.env = NODE_ENV || 'development';
+    this.env = NODE_ENV || "development" ;
     this.port = PORT || 9000;
 
     //this function automatic run
@@ -31,10 +34,11 @@ class App {
     }
 
     try {
-      await connect(dbConnect.url);
+       const conn = await connect(dbConnect.url)
       console.log('Database connecteD successfully!');
+      console.log(`MongoDB connnected: ${conn.connection.host}`);
     } catch (error) {
-      console.error('Error connecting to the database:', error);
+      console.log('Error connecting to the database:', error);
     }
   }
 

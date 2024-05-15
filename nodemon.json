@@ -1,0 +1,10 @@
+{
+  "watch": ["src", ".env"],
+  "ext": "js,ts,json",
+  "ignore": ["src/logs/*", "src/**/*.{spec,test}.ts", "node_modules"],
+  "exec": "ts-node-dev --transpile-only -r tsconfig-paths/register ./src/server.ts",
+  "restartable":"rs",
+  "env": {
+    "NODE_ENV": "development"
+  }
+}
