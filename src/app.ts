@@ -5,8 +5,7 @@ import { set, connect } from 'mongoose';
 import { dbConnect } from '@databases';
 
 // const add = ""
-const add2: string = 'hhhhie jubsd';
-console.log(add2, 'oppssde');
+// const add2: string = 'hhhhie jubsd';
 
 class App {
   public app: Application;
