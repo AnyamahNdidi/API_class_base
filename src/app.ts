@@ -1,6 +1,7 @@
 import express, { Application } from 'express';
 import { PORT, NODE_ENV } from '@config';
 import morgan from 'morgan';
+
 import { set, connect } from 'mongoose';
 import { dbConnect } from '@databases';
 import { logger, stream } from '@utils/logger';
@@ -8,7 +9,7 @@ import { logger, stream } from '@utils/logger';
 // const add = ""
 // const add2: string = 'hhhhie jubsd';
 
-console.log('hibhhss');
+// console.log('hibhhssjdd');
 
 class App {
   public app: Application;
@@ -17,7 +18,7 @@ class App {
 
   constructor() {
     this.app = express();
-    this.env = NODE_ENV;
+    this.env = NODE_ENV || 'development';
     this.port = PORT || 9000;
 
     //this function automatic run
