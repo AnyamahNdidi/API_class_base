@@ -3,9 +3,12 @@ import { PORT, NODE_ENV } from '@config';
 import morgan from 'morgan';
 import { set, connect } from 'mongoose';
 import { dbConnect } from '@databases';
+import { logger, stream } from '@utils/logger';
 
 // const add = ""
 // const add2: string = 'hhhhie jubsd';
+
+console.log('hiss');
 
 class App {
   public app: Application;
@@ -14,7 +17,7 @@ class App {
 
   constructor() {
     this.app = express();
-    this.env = NODE_ENV || 'development';
+    this.env = NODE_ENV;
     this.port = PORT || 9000;
 
     //this function automatic run
@@ -23,8 +26,10 @@ class App {
   }
   public listen() {
     this.app.listen(this.port, () => {
-      console.log(`app ddisss listening on ${this.port}`);
-      console.log(`-----${this.env}-----`);
+      logger.info(`=================================`);
+      logger.info(`======= ENV: ${this.env} =======`);
+      logger.info(`🚀 App listening onn the port ${this.port}`);
+      logger.info(`=================================`);
     });
   }
 
@@ -35,15 +40,15 @@ class App {
 
     try {
       const conn = await connect(dbConnect.url);
-      console.log('Database connecteD successfully!');
-      console.log(`MongoDBcf connected: ${conn.connection.host}`);
+      logger.info('Database connecteD successfully!');
+      logger.info(`MongoDBcf connected: ${conn.connection.host}`);
     } catch (error) {
-      console.log('Error connecting to the database:op', error);
+      logger.info('Error connecting to the database:op', error);
     }
   }
 
   private initializeMiddlewares() {
-    this.app.use(morgan('dev'));
+    this.app.use(morgan('combined', { stream }));
   }
 }
 

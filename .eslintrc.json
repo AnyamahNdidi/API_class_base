@@ -15,12 +15,12 @@
     "@typescript-eslint/no-parameter-properties": 0,
     "@typescript-eslint/interface-name-prefix": 0,
     "@typescript-eslint/explicit-module-boundary-types": 0,
-    "@typescript-eslint/no-explicit-any": "error",
+    "@typescript-eslint/no-explicit-any": "off",
     "@typescript-eslint/ban-types": "off",
     "@typescript-eslint/no-unused-vars": "error",
     "@typescript-eslint/no-var-requires": "error",
     "no-duplicate-imports": "error",
-    // "no-console": ["warn"],
+    "no-console": ["warn"],
     "prettier/prettier":0
    
   }
