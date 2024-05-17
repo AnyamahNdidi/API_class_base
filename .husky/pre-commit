@@ -3,6 +3,6 @@
 
 # npm test
 # npm run lint:fix
-# npx lint-staged
+npx lint-staged
 
 # exit 1

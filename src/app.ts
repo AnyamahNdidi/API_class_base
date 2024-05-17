@@ -6,7 +6,7 @@ import { dbConnect } from '@databases';
 
 // const add = ""
 const add2: string = 'hhh';
-console.log(add2,"oppse");
+console.log(add2, 'oppssde');
 
 class App {
   public app: Application;
