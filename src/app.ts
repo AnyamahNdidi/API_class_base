@@ -8,7 +8,7 @@ import { logger, stream } from '@utils/logger';
 // const add = ""
 // const add2: string = 'hhhhie jubsd';
 
-console.log('hiss');
+console.log('hibhhss');
 
 class App {
   public app: Application;
