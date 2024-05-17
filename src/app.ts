@@ -4,8 +4,9 @@ import morgan from 'morgan';
 import { set, connect } from 'mongoose';
 import { dbConnect } from '@databases';
 
-const add = ""
-const add2= "hhh"
+// const add = ""
+const add2: string = 'hhh';
+console.log(add2,"oppse");
 
 class App {
   public app: Application;
@@ -14,7 +15,7 @@ class App {
 
   constructor() {
     this.app = express();
-    this.env = NODE_ENV || "development" ;
+    this.env = NODE_ENV || 'development';
     this.port = PORT || 9000;
 
     //this function automatic run
@@ -23,7 +24,7 @@ class App {
   }
   public listen() {
     this.app.listen(this.port, () => {
-      console.log(`app is listening on ${this.port}`);
+      console.log(`app ddisss listening on ${this.port}`);
       console.log(`-----${this.env}-----`);
     });
   }
@@ -34,11 +35,11 @@ class App {
     }
 
     try {
-       const conn = await connect(dbConnect.url)
+      const conn = await connect(dbConnect.url);
       console.log('Database connecteD successfully!');
-      console.log(`MongoDB connnected: ${conn.connection.host}`);
+      console.log(`MongoDBcf connected: ${conn.connection.host}`);
     } catch (error) {
-      console.log('Error connecting to the database:', error);
+      console.log('Error connecting to the database:op', error);
     }
   }
 

@@ -6,9 +6,9 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "nodemon",
-    "prepare": "husky && husky install",
-    "lint":"eslint --ignore-path .gitignore --ext .ts src/",
-    "lint:fix": "npm run lint -- --fix"
+    "prepare": "husky install",
+    "lint": "eslint --ignore-path .gitignore --ext .ts src/",
+    "lint:fix": "eslint --fix ."
   },
   "keywords": [],
   "author": "",
@@ -35,16 +35,11 @@
     "eslint-plugin-n": "^16.6.2",
     "eslint-plugin-prettier": "^5.1.3",
     "eslint-plugin-promise": "^6.1.1",
+    "husky": "^8.0.0",
+    "lint-staged": "^15.2.2",
     "nodemon": "^3.1.0",
     "prettier": "^3.2.5",
     "tsconfig-paths": "^4.2.0",
-    "typescript": "^5.4.3",
-    "husky": "^8.0.0"
-  },
-   "lint-staged": {
-    "*.ts": [
-      "prettier --write",
-      "eslint"
-    ]
+    "typescript": "^5.4.3"
   }
 }

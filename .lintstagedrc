@@ -1,0 +1,3 @@
+{
+  "*.(ts|ts)": ["prettier --write", "npm run lint"]
+}
