@@ -35,6 +35,12 @@
       "@config": ["./config"],
       "@databases": ["databases"],
       "@utils/*":["utils/*"],
+      "@interfaces/*":["interfaces/*"],
+      "@models/*":["models/*"],
+      "@dtos/*": ["dtos/*"],
+      "@services/*":["services/*"],
+      "@controllers/*":["controllers/*"],
+      "@routes/*":["routes/*"]
     } /* Specify a set of entries that re-map imports to additional lookup locations. */,
     // "rootDirs": [],                                   /* Allow multiple folders to be treated as one when resolving modules. */
     // "typeRoots": [],                                  /* Specify multiple folders that act like './node_modules/@types'. */
