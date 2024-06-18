@@ -1,10 +1,12 @@
 import express, { Application } from 'express';
 import { PORT, NODE_ENV } from '@config';
 import morgan from 'morgan';
-
-import { set, connect } from 'mongoose';
+import cors from 'cors';
+import helmet from 'helmet';
+import { set, connect, disconnect } from 'mongoose';
 import { dbConnect } from '@databases';
 import { logger, stream } from '@utils/logger';
+import { Routes } from '@interfaces/routes.interface';
 
 // const add = ""
 // const add2: string = 'hhhhie jubsd';
@@ -16,7 +18,7 @@ class App {
   public port: number | string;
   public env: string;
 
-  constructor() {
+  constructor(routes: Routes[]) {
     this.app = express();
     this.env = NODE_ENV || 'development';
     this.port = PORT || 9000;
@@ -24,6 +26,7 @@ class App {
     //this function automatic run
     this.initializeMiddlewares();
     this.connectToDatabase();
+    this.initializeRoutes(routes);
   }
   public listen() {
     this.app.listen(this.port, () => {
@@ -32,6 +35,15 @@ class App {
       logger.info(`🚀 App listening onn the port ${this.port}`);
       logger.info(`=================================`);
     });
+  }
+
+  public async closeDatabaseConnection(): Promise<void> {
+    try {
+      await disconnect();
+      logger.info('database (mongoDbB) has been disconnect successfully');
+    } catch (error) {
+      logger.info('something happen when closing database', error);
+    }
   }
 
   private async connectToDatabase() {
@@ -50,6 +62,15 @@ class App {
 
   private initializeMiddlewares() {
     this.app.use(morgan('combined', { stream }));
+    this.app.use(cors());
+    this.app.use(express.json());
+    this.app.use(helmet());
+  }
+
+  private initializeRoutes(routes: Routes[]) {
+    routes.forEach(route => {
+      this.app.use('/api', route.router);
+    });
   }
 }
 
