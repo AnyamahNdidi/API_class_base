@@ -20,7 +20,7 @@
     "@typescript-eslint/no-unused-vars": "error",
     "@typescript-eslint/no-var-requires": "error",
     "no-duplicate-imports": "error",
-    "no-console": "error",
+    "no-console": "warn",
     "prettier/prettier":0
    
   }
