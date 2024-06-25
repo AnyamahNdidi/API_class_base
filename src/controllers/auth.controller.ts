@@ -16,6 +16,20 @@ class AuthController {
       next(error);
     }
   };
+
+  public login = async (req: Request, res: Response, next: NextFunction) => {
+    try {
+      const userData: CreateUserDto = req.body;
+      const { findUser } = await this.authServices.login(userData);
+
+      res.status(200).json({
+        message: 'login successfully',
+        data: findUser,
+      });
+    } catch (error) {
+      next(error);
+    }
+  };
 }
 
 export default AuthController;

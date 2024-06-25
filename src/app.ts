@@ -7,6 +7,8 @@ import { set, connect, disconnect } from 'mongoose';
 import { dbConnect } from '@databases';
 import { logger, stream } from '@utils/logger';
 import { Routes } from '@interfaces/routes.interface';
+// import { errorHandler } from '@/utils/errorHandler';
+import errorMiddleware from '@middlewares/error.middleware';
 
 // const add = ""
 // const add2: string = 'hhhhie jubsd';
@@ -27,6 +29,7 @@ class App {
     this.initializeMiddlewares();
     this.connectToDatabase();
     this.initializeRoutes(routes);
+    this.initializeErrorHandling();
   }
   public listen() {
     this.app.listen(this.port, () => {
@@ -71,6 +74,10 @@ class App {
     routes.forEach(route => {
       this.app.use('/api', route.router);
     });
+  }
+  private initializeErrorHandling() {
+    // this.app.use(errorHandler);
+    this.app.use(errorMiddleware);
   }
 }
 
