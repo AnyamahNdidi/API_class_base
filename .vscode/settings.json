@@ -1,0 +1,12 @@
+
+{
+  "editor.formatOnSave": false,
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "editor.stickyScroll.enabled": true,
+  "editor.showUnused": true,
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": true
+  },
+  "workbench.iconTheme": "material-icon-theme",
+  "workbench.sideBar.location": "right"
+}

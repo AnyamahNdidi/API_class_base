@@ -1,4 +1,5 @@
 import express, { Application } from 'express';
+import cookieParser from 'cookie-parser';
 import { PORT, NODE_ENV } from '@config';
 import morgan from 'morgan';
 import cors from 'cors';
@@ -68,6 +69,7 @@ class App {
     this.app.use(cors());
     this.app.use(express.json());
     this.app.use(helmet());
+    this.app.use(cookieParser());
   }
 
   private initializeRoutes(routes: Routes[]) {

@@ -23,7 +23,7 @@ async function handleUncaughtError(error: Error) {
   process.exit(1);
 }
 
-async function handleUnhandledRejection(reason: any, promise: Promise<any>) {
+async function handleUnhandledRejection(reason: string, promise: Promise<any>) {
   logger.error('Unhandled promise rejection:', reason);
   logger.info('Promise:', promise);
   await app.closeDatabaseConnection();
