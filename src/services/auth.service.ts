@@ -1,13 +1,13 @@
 import { hash, compare } from 'bcrypt';
 // import { sign } from 'jsonwebtoken';
-import { CreateUserDto } from '@dtos/users.dto';
-import userModel from '@/models/users.model';
-import { isEmpty } from '@utils/util';
-import { User } from '@interfaces/user.interface';
-import { TokenData, DataStoredInToken } from '@interfaces/auth.interface';
-import { MainAppError } from '@utils/errorDefinition';
-import { HTTP } from '@interfaces/error.interface';
-import { SECRET_KEY } from '@config';
+import { CreateUserDto } from '../dtos/users.dto';
+import userModel from '../models/users.model';
+import { isEmpty } from '../utils/util';
+import { User } from '../interfaces/user.interface';
+import { TokenData, DataStoredInToken } from '../interfaces/auth.interface';
+import { MainAppError } from '../utils/errorDefinition';
+import { HTTP } from '../interfaces/error.interface';
+import { SECRET_KEY } from '../config';
 import { sign } from 'jsonwebtoken';
 // import { HttpException } from '@exceptions/HttpExpection';
 

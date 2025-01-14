@@ -1,6 +1,6 @@
 import { NextFunction, Request, Response } from 'express';
-import { logger } from '@utils/logger';
-import { MainAppError } from '@/utils/errorDefinition';
+import { logger } from '../utils/logger';
+import { MainAppError } from '../utils/errorDefinition';
 
 const errorMiddleware = (error: MainAppError, req: Request, res: Response, next: NextFunction) => {
   try {

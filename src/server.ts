@@ -7,7 +7,7 @@ app.listen();
 
 async function shutdownServer(signal: string) {
   try {
-    logger.info(`Received ${signal}. Shutting down servver...`);
+    logger.info(`Received ${signal}. Shutting down server...`);
     await app.closeDatabaseConnection();
     logger.info('Server stopped gracefully.');
     process.exit(0);

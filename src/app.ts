@@ -1,15 +1,15 @@
 import express, { Application } from 'express';
 import cookieParser from 'cookie-parser';
-import { PORT, NODE_ENV } from '@config';
+import { PORT, NODE_ENV } from './config';
 import morgan from 'morgan';
 import cors from 'cors';
 import helmet from 'helmet';
 import { set, connect, disconnect } from 'mongoose';
-import { dbConnect } from '@databases';
-import { logger, stream } from '@utils/logger';
-import { Routes } from '@interfaces/routes.interface';
+import { dbConnect } from './databases';
+import { logger, stream } from './utils/logger';
+import { Routes } from './interfaces/routes.interface';
 // import { errorHandler } from '@/utils/errorHandler';
-import errorMiddleware from '@middlewares/error.middleware';
+import errorMiddleware from './middlewares/error.middleware';
 
 // const add = ""
 // const add2: string = 'hhhhie jubsd';
@@ -48,6 +48,10 @@ class App {
     } catch (error) {
       logger.info('something happen when closing database', error);
     }
+  }
+
+  public getServer() {
+    return this.app;
   }
 
   private async connectToDatabase() {

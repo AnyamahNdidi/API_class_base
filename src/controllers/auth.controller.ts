@@ -1,7 +1,7 @@
 import { NextFunction, Request, Response } from 'express';
-import AuthService from '@/services/auth.service';
-import { CreateUserDto } from '@dtos/users.dto';
-import { User } from '@interfaces/user.interface';
+import AuthService from '../services/auth.service';
+import { CreateUserDto } from '../dtos/users.dto';
+import { User } from '../interfaces/user.interface';
 
 class AuthController {
   public authServices = new AuthService();
@@ -32,20 +32,20 @@ class AuthController {
     }
   };
 
-  public logout = async (req: Request, res: Response, next: NextFunction) => {
-    try {
-      const userData: User = req.user;
+  // public logout = async (req: Request, res: Response, next: NextFunction) => {
+  //   try {
+  //     const userData: User = req.user as any;
 
-      const logOutUserData: User = await this.authServices.logout(userData);
-      res.setHeader('Set-Cookie', ['Authorization=; Max-age=0']);
-      res.status(200).json({
-        data: logOutUserData,
-        message: 'logout successfully',
-      });
-    } catch (error) {
-      next(error);
-    }
-  };
+  //     const logOutUserData: User = await this.authServices.logout(userData);
+  //     res.setHeader('Set-Cookie', ['Authorization=; Max-age=0']);
+  //     res.status(200).json({
+  //       data: logOutUserData,
+  //       message: 'logout successfully',
+  //     });
+  //   } catch (error) {
+  //     next(error);
+  //   }
+  // };
 }
 
 export default AuthController;

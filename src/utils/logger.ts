@@ -1,4 +1,4 @@
-import { LOG_DIR } from '@config';
+import { LOG_DIR } from '../config';
 import { join } from 'path';
 import { existsSync, mkdirSync } from 'fs';
 import winston from 'winston';
